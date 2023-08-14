@@ -1,0 +1,59 @@
+{
+  "name": "automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run --spec cypress/integration/examples/*/.feature",
+    "headTest": "npm run test --headed --browser chrome",
+    "chromeTest": "npm run test --browser chrome",
+    "recordDashBoardTest": "npx cypress run --record --key c6129d05-cf01-4f20-8f77-1396edfb9483 --spec cypress/integration/examples/angularTestApp/form.feature",
+    "greenKartTest": "npm run test --spec \"cypress/integration/GreenKart/*\"",
+    "tag": "npx cypress run --env tags='@Smoke' --headed --browser chrome",
+    "env": "npx cypress run --spec cypress/integration/examples/BDD/*.feature --headed --browser chrome --env url='https://google.com'",
+    "multibrowser": "npx cypress run --spec cypress/integration/examples/angularTestApp/smartTable/webTable.feature --headed --browser chrome & npx cypress run --spec cypress/integration/examples/angularTestApp/smartTable/webTable.feature --headed --browser electron",
+    "cy:open_dev": "npx cypress open --env userName=cytest3@test.com,password=Welcome000",
+    "cy:open_process": "npx cypress open --env username=$DB_USERNAME,password=$PASSWORD"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": [
+      "cypress/e2e/integration/example/BDD/stepdefination/*.js"
+    ],
+    "json": {
+      "enabled": true,
+      "output": "cypress/cucumberReports/results.json",
+      "overwrite": true,
+      "displayReportTime": true,
+      "start_timestamp": true
+    },
+    "html": {
+      "enabled": true,
+      "output": "cypress/htmlreport/results.json"
+    }
+  },
+  "author": "Devesh Sahare",
+  "license": "ISC",
+  "devDependencies": {
+    "@cypress/browserify-preprocessor": "latest",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "cypress": "^12.17.2",
+    "cypress-plugin-snapshots": "^1.4.4",
+    "cypress-sql-server": "^1.0.0",
+    "eslint": "^8.37.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "mocha": "^10.1.0",
+    "multiple-cucumber-html-reporter": "^3.0.1",
+    "neat-csv": "^5.1.0"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.5",
+    "@cypress/browserify-preprocessor": "latest",
+    "convert-excel-to-json": "^1.7.0",
+    "cypress-ag-grid": "^2.0.2",
+    "mssql": "^9.1.1",
+    "mysql": "^2.18.1"
+  }
+}
